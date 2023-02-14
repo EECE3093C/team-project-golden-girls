@@ -1,6 +1,6 @@
 # Obscene Odds
 
-Obscene odds is a sports betting information application. **There will be dark mode**. Maybe this whole thing will be dark mode!
+Obscene odds is a centralized dashboard that provides betting odds along with team/player statistics to help with users making more informed bets on third-party betting applications. **There will be dark mode**. Maybe this whole thing will be dark mode!
 
 ## Vision
 
