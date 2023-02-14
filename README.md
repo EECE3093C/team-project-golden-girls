@@ -14,7 +14,7 @@ Sites like ESPN/NBA official websites provide the ability to view statistics of 
 
 Most bets are made with a severe lack of insight into the quality of the bet based on previous statistics. The reasoning can often be not knowing where to get the data. Centralizing the data and making it easy for users to filter and sift through the data while also having access to live odds allows users to make, while not perfect bets, much better informed ones.
 
-### Audience (for whom)
+### Audience
 
 Our target audience is casual sports betters who want all the relevant information condensed into a single, intuitive site. Specifically, we divide our audience into two major groups: (1) individuals that are expereinced with betting who need lots of information to make informed bets and (2) individuals who are new to sports betting and need somewhere to start.
 
@@ -45,4 +45,5 @@ Some challenges we may run into:
 - Catering to both an advanced and beginner audience
 - Integrating the api information into
 - Coordinating the tasks so that all members can meaningfully contribute simultaneously
-- The single most serious challenge we expect to face is complexity in the project formed by interfacing the frontend and backend. We will mitigate this risk by staying on track and adding test cases and documentation. In particular, we will ensure our backend's interface is very thoroughly documented.
+
+The single most serious challenge we expect to face is **complexity** in the project formed by interfacing the frontend and backend. We will mitigate this risk by staying on track and adding test cases and documentation. In particular, we will ensure our backend's interface is very thoroughly documented.
