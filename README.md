@@ -2,8 +2,6 @@
 
 We will be making a sports betting application. **There will be dark mode**. Maybe this whole thing will be dark mode!
 
-OBSCENE adjective: (of the portrayal or description of sexual matters) offensive or disgusting by accepted standards of morality and decency)
-
 Our platform is obscenely helpful.
 
 ## Vision
