@@ -26,11 +26,12 @@ Advanced Users: Users that would
 
 ### Objectives/Scope
 
-Our high level objectives are to create a front end with:
+Our high level objectives are to create a front end with
 - A landing page
 - An intuitive display for showing relevant stats from recent games
 - A display for the odds of different betting sites
-- A back end that:
+
+and a back end that
 - Retrieves statistical data using apis
 - Parses that statistical data and serves it to the frontend
 
