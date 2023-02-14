@@ -1,6 +1,6 @@
 # Obscene Odds
 
-Obscene odds is a sports betting application. **There will be dark mode**. Maybe this whole thing will be dark mode!
+Obscene odds is a sports betting information application. **There will be dark mode**. Maybe this whole thing will be dark mode!
 
 ## Vision
 
