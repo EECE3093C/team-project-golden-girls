@@ -59,4 +59,7 @@ The single most serious challenge we expect to face is **complexity** in the pro
 
 ## Installation/Setup
 
-...
+- Clone the repository
+- Ensure you have Node.js version >= 14.0.0 and npm version >= 5.6 
+- Run `npm install` to download node modules
+- Run `npm start` to view webpage
