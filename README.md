@@ -2,7 +2,9 @@
 
 Obscene odds is a centralized dashboard that provides betting odds along with team/player statistics to help with users making more informed bets on third-party betting applications. **There will be dark mode**. Maybe this whole thing will be dark mode!
 
-## Vision
+## Project Description
+
+### Vision
 
 Obscene odds is a dashboard that provides team and player statistics and odds to aid in sports betting. It’s designed for people who are new to betting or those who want to perform their own statistical analyses on players and teams. It solves the problem of information being spread out all over the internet by centralizing it in one place. Since it doesn’t involve human analysts, it also solves the problem of possible bias. It allows less advanced sports betters (that aren’t watching every game) the ability to quickly evaluate a bet based on its odds and how teams or players are currently performing.
 
@@ -31,12 +33,12 @@ and a back end that
 
 Originally, we will design the website to work with NBA statistics and bets, and then, time permitting, we will expand it to include other major sports leagues.
 
-## Architecture
+### Architecture
 
 We will be making a web-based app with a frontend and a backend. The frontend will interact with the backend through API calls. We will provide an option to export data/filters/stats to the user’s local computer. We will use React.js for the frontend and Node.js for the backend.
 
 
-## Challenges and Risks
+### Challenges and Risks
 
 Some challenges we may run into:
 - Inexperience with certain project management techniques
@@ -47,3 +49,14 @@ Some challenges we may run into:
 - Coordinating the tasks so that all members can meaningfully contribute simultaneously
 
 The single most serious challenge we expect to face is **complexity** in the project formed by interfacing the frontend and backend. We will mitigate this risk by staying on track and adding test cases and documentation. In particular, we will ensure our backend's interface is very thoroughly documented.
+
+### Roles
+
+**Gareth Fultz** - frontend
+**Nate Louder** - backend
+**Calvin Kinateder** - backend/frontend connection
+**Jimmy German** - frontend
+
+## Installation/Setup
+
+...
