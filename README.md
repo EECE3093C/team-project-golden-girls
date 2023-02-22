@@ -52,10 +52,10 @@ The single most serious challenge we expect to face is **complexity** in the pro
 
 ### Roles
 
-**Gareth Fultz** - frontend
-**Nate Louder** - backend
-**Calvin Kinateder** - backend/frontend connection
-**Jimmy German** - frontend
+- **Gareth Fultz** - frontend
+- **Nate Louder** - backend
+- **Calvin Kinateder** - backend/frontend connection
+- **Jimmy German** - frontend
 
 ## Installation/Setup
 
