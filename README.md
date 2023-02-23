@@ -60,7 +60,7 @@ The single most serious challenge we expect to face is **complexity** in the pro
 ## Setup
 
 1. Build the docker image with `docker build -f Dockerfile.prod -t oo-frontend .`
-2. Run the image in detached mode with `docker run -p 3000:3000 -d oo-frontend --name oof`
+2. Run the image in detached mode with `docker run -p 3000:3000 -d --name oof oo-frontend `
     - Kill the process with `docker kill oof`
     - If you want to run the image in the foreground, remove the `-d` flag
 3. Navigate to `localhost:3000` in your browser
