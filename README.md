@@ -57,9 +57,10 @@ The single most serious challenge we expect to face is **complexity** in the pro
 - **Calvin Kinateder** - backend/frontend connection
 - **Jimmy German** - frontend
 
-## Installation/Setup
+## Setup
 
-- Clone the repository
-- Ensure you have Node.js version >= 14.0.0 and npm version >= 5.6 
-- Run `npm install` to download node modules
-- Run `npm start` to view webpage
+1. Build the docker image with `docker build -f Dockerfile.prod -t oo-frontend .`
+2. Run the image in detached mode with `docker run -p 3000:3000 -d oo-frontend --name oof`
+    - Kill the process with `docker kill oof`
+    - If you want to run the image in the foreground, remove the `-d` flag
+3. Navigate to `localhost:3000` in your browser
