@@ -61,8 +61,30 @@ The single most serious challenge we expect to face is **complexity** in the pro
 
 ## Setup
 
+There are 3 different dockerfiles:
+
+1. `Dockerfile.dev` - **development** (mounts the current directory)
+2. `Dockerfile.prod` - production
+3. `Dockerfile.test` - testing
+
+### Development
+
+1. Build the docker image with `docker build -f Dockerfile.dev -t oo-frontend .`
+2. Run the image with `docker run --rm -p 3000:3000 --mount type=bind,source="$(pwd)",target="$(pwd)" -w "$(pwd)" --name oof oo-frontend`
+
+*The `--mount` command may be different for windows systems. If you get an error, it may be because of "$(pwd)". Start [here](https://stackoverflow.com/questions/41485217/mount-current-directory-as-a-volume-in-docker-on-windows-10) for help.*
+
+### Production
+
 1. Build the docker image with `docker build -f Dockerfile.prod -t oo-frontend .`
-2. Run the image in detached mode with `docker run -p 3000:3000 -d --name oof oo-frontend `
-    - Kill the process with `docker kill oof`
-    - If you want to run the image in the foreground, remove the `-d` flag
-3. Navigate to `localhost:3000` in your browser
+2. Run the image with `docker run --rm -p 3000:3000 --name oof oo-frontend`
+
+### Testing
+
+1. Build the docker image with `docker build -f Dockerfile.test -t oo-frontend .`
+2. Run the image with `docker run --rm -p 3000:3000 --name oof oo-frontend`
+
+For all of the above, you can access the app at `localhost:3000`.
+
+- If you want to run the container in the background, add the `-d` flag
+- Kill the process with `Ctrl-c` (in foreground) or `docker kill oof` (in background)
