@@ -2,6 +2,8 @@
 
 Obscene odds is a centralized dashboard that provides betting odds along with team/player statistics to help with users making more informed bets on third-party betting applications. **There will be dark mode**. Maybe this whole thing will be dark mode!
 
+See the backend [here.](https://github.com/EECE3093C/team-project-golden-girls-backend).
+
 ## Project Description
 
 ### Vision
