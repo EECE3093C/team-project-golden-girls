@@ -26,7 +26,6 @@
 
 .headerLink {
     color: #3f3f3f;
-    font-family: Title;
     font-size: 28px;
     line-height: 28px;
     font-weight: normal;
@@ -35,7 +34,6 @@
 
 .headerTitle {
     color: #d2ac47;
-    font-family: Title;
     font-size: 48px;
     line-height: 48px;
     font-weight: normal;
