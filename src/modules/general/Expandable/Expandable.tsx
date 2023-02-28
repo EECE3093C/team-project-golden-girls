@@ -4,25 +4,39 @@ import "./Expandable.css";
 type Height = "auto" | number;
 
 type Props = {
+    /** The height that this box should expand to. Either a number or 'auto'. */
     expandedHeight: Height;
+    /** Whether the content should be expanded */
     expanded: boolean;
+    /** The child nodes that are collapsed and expanded */
     children?: React.ReactNode;
 };
 
 type State = {
-    containerHeight: number;
+    containerHeight: Height;
 };
 
+/*
+ * A reusable component that collapses or expands its children.
+ *
+ * Toggling the expanded property will cause the content to animate to an expanded
+ * position or an unexpanded position depending on the value of the expanded property.
+ */
 class Expandable extends React.Component<Props, State> {
     contentRef: React.RefObject<HTMLDivElement>;
+    containerRef: React.RefObject<HTMLDivElement>;
 
-    state = {
+    state: State = {
         containerHeight: 0,
     };
 
     constructor(props: Props) {
         super(props);
+
+        this.onResize = this.onResize.bind(this);
+
         this.contentRef = React.createRef();
+        this.containerRef = React.createRef();
     }
 
     componentDidMount() {
@@ -37,12 +51,16 @@ class Expandable extends React.Component<Props, State> {
     }
 
     componentWillUnmount() {
-        window.addEventListener("resize", this.onResize);
+        window.removeEventListener("resize", this.onResize);
     }
 
     render(): React.ReactNode {
         return (
-            <div className="expandableContainer" style={{ height: this.state.containerHeight }}>
+            <div
+                className="expandableContainer"
+                style={{ height: this.state.containerHeight }}
+                onTransitionEnd={this.onTransitionEnd.bind(this)}
+            >
                 <div className="expandableContent" ref={this.contentRef}>
                     {this.props.children}
                 </div>
@@ -70,7 +88,22 @@ class Expandable extends React.Component<Props, State> {
         }
 
         if (height !== this.state.containerHeight) {
+            if (this.state.containerHeight === "auto" && this.contentRef.current !== null) {
+                this.setState({ containerHeight: this.contentRef.current.offsetHeight });
+                console.log(this.contentRef.current.offsetHeight);
+            }
+
             this.setState({ containerHeight: height });
+        }
+    }
+
+    /*
+     * On transition end, if the height is set to auto, set the container's height to auto,
+     * so it can still resize with its children.
+     */
+    onTransitionEnd() {
+        if (this.props.expanded) {
+            this.setState({ containerHeight: "auto" });
         }
     }
 }

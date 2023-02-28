@@ -1,5 +1,5 @@
 @font-face {
-    font-family: "Title";
+    font-family: "Jockey";
     src: local("JockeyOne"), url("./assets/fonts/Jockey_One/JockeyOne-Regular.ttf") format("truetype");
 }
 
@@ -11,8 +11,7 @@ body {
 
 body {
     background: linear-gradient(0deg, #232323 76.67%, rgba(35, 35, 35, 0) 113.52%);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-        "Droid Sans", "Helvetica Neue", sans-serif;
+    font-family: "Jockey";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

@@ -1,0 +1,121 @@
+.gameCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-width: 900px;
+    width: 50%;
+
+    background: #404040;
+    mix-blend-mode: normal;
+    border-radius: 24px;
+
+    overflow: hidden;
+}
+
+.gameCard .gameTitleBar {
+    width: 100%;
+    height: 57px;
+
+    background: rgb(255, 0, 0);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+    overflow: hidden;
+    border-radius: 24px;
+
+    cursor: pointer;
+}
+
+.gameTitleBar .logo {
+    position: absolute;
+    height: 90%;
+    top: 5%;
+}
+
+.gameTitleBar .logo.left {
+    left: 0;
+}
+
+.gameTitleBar .logo.right {
+    right: 0;
+}
+
+.gameTitleBar .edge {
+    position: absolute;
+    height: 100%;
+    top: 0;
+}
+
+.gameTitleBar .edge.left {
+    left: 0;
+}
+
+.gameTitleBar .edge.right {
+    right: 0;
+}
+
+.teamName {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    text-align: center;
+    color: white;
+    font-size: 32px;
+}
+
+.teamName.left {
+    left: 10%;
+}
+
+.teamName.right {
+    right: 10%;
+}
+
+.gameCardButtonContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+
+.expandButton.gameCardButton {
+    width: auto;
+}
+
+.gameCardInfoContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px 10px 0;
+
+    border-width: 3px;
+    border-style: solid;
+    border-image: linear-gradient(90deg, rgba(210, 172, 71, 0) 0%, #d2ac47 50%, rgba(210, 172, 71, 0) 100%) 0 0 100% 0;
+}
+
+.gameInfoText {
+    color: white;
+    font-size: 24px;
+}
+
+.betButtonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+    padding: 5px;
+}
+
+.betButton {
+    background: #404040;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    width: 100%;
+    font-size: 24px;
+}
