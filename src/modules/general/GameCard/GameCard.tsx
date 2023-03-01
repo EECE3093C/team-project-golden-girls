@@ -15,7 +15,7 @@ type Props = {
 };
 
 type State = {
-    expanded: boolean;
+    expanded: boolean; 
 };
 
 /*
