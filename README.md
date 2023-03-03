@@ -40,6 +40,14 @@ Originally, we will design the website to work with NBA statistics and bets, and
 We will be making a web-based app with a frontend and a backend. The frontend will interact with the backend through API calls. We will provide an option to export data/filters/stats to the user’s local computer. We will use React.js for the frontend and Node.js for the backend.
 
 
+#### AWS S3 Bucket 
+<img src="https://obscene-odds-images.s3.us-east-2.amazonaws.com/aws-s3-logo.png" alt="" width="15%" height="15%" title="">
+
+We will be using an AWS S3 Bucket to store images we aren't able to access publicly online such as images we create or edit. We are able to access these images publicly in our code through the following url :
+```
+https://obscene-odds-images.s3.us-east-2.amazonaws.com/<image-name>
+```
+
 ### Challenges and Risks
 
 Some challenges we may run into:
