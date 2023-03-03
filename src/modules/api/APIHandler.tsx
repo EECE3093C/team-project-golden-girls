@@ -5,17 +5,15 @@ const BASE_API_URL = "http://localhost:9000/api/v1/";
 
 class APIHandler {
     static async getGames(startDate: Date, endDate: Date, sport: Sport): Promise<GameInfo[]> {
-        const response = await fetch(BASE_API_URL + "games", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                start_date: startDate.toUTCString(),
-                end_date: endDate.toUTCString(),
-                sport: sport,
-            }),
-        });
+        const response = await fetch(
+            BASE_API_URL +
+                "games" +
+                new URLSearchParams({
+                    start_date: startDate.toUTCString(),
+                    end_date: endDate.toUTCString(),
+                    sport: sport,
+                })
+        );
         const data = await response.json();
         const games: GameInfo[] = [];
         for (const game of data.games) {
