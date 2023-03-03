@@ -58,7 +58,7 @@
     right: 0;
 }
 
-.teamName {
+.gameTitleBar .teamName {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
@@ -67,11 +67,11 @@
     font-size: 32px;
 }
 
-.teamName.left {
+.gameTitleBar .teamName.left {
     left: 10%;
 }
 
-.teamName.right {
+.gameTitleBar .teamName.right {
     right: 10%;
 }
 
