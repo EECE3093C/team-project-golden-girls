@@ -78,7 +78,7 @@ There are 3 different dockerfiles:
 ### Development
 
 1. Build the docker image with `docker build -f Dockerfile.dev -t oo-frontend .`
-2. Run the image with `docker run --rm -p 3000:3000 --mount type=bind,source="$(pwd)",target="$(pwd)" -w "$(pwd)" --name oof oo-frontend`
+2. Run the image with `docker run --rm -p 3000:3000 --mount type=bind,source="$(pwd)",target="/work" -w "/work" --name oof oo-frontend`
 
 *The `--mount` command may be different for windows systems. If you get an error, it may be because of "$(pwd)". Start [here](https://stackoverflow.com/questions/41485217/mount-current-directory-as-a-volume-in-docker-on-windows-10) for help.*
 
