@@ -1,12 +1,12 @@
-.gameScoreWindow{
+.liveScoreCard {
     display: flex;
     flex-direction: column;
     align-items: normal;
-    gap : 5px;
+    gap: 5px;
 
     margin: 10px;
 
-    width: 360px;
+    width: 280px;
     padding: 5px 20px;
     background: transparent;
     mix-blend-mode: normal;
@@ -14,39 +14,41 @@
 
     border-width: 1px 0px;
     border-style: solid;
-    border-color: #D2AC47;
+    border-color: #d2ac47;
     border-radius: 20px;
 
     overflow: hidden;
 }
-.gameScoreWindow .scoreDateRow{
+
+.liveScoreCard .scoreDateRow {
     width: 100%;
-    height: 50px;
+    height: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.gameScoreWindow .teamInfo{
+
+.liveScoreCard .teamInfo {
     width: 100%;
-    height: 50px;
+    height: 40px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: left;
 }
-.gameInfoText {
+
+.liveScoreText {
     position: relative;
     color: white;
-    font-size: 30px;
-    line-height: 30px;
+    font-size: 22px;
+    line-height: 22px;
 }
-.gameInfoText .logo {
+
+.liveScoreText .logo {
     height: 90%;
     margin-right: 8px;
-    
-
 }
-.gameInfoText .teamScore {
+
+.liveScoreText .teamScore {
     margin-left: auto;
 }
-

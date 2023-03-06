@@ -12,12 +12,26 @@ type Props = {
     children?: React.ReactNode;
 };
 
+/*
+ * The different states Expandable can be in.
+ *
+ * PREPARING_TO_CLOSE exists as a state so that we can change the height to fixed number before closing. This is
+ * because css transitions do not work with the "auto" height.
+ */
+enum ExpandState {
+    PREPARING_TO_CLOSE = 0,
+    CLOSING = 1,
+    CLOSED = 2,
+    OPENING = 3,
+    OPEN = 4,
+}
+
 type State = {
-    containerHeight: Height;
+    expandState: ExpandState;
 };
 
 /*
- * A reusable component that collapses or expands its children.
+ * A reusable component that collapses or expands its children using a smooth transition.
  *
  * Toggling the expanded property will cause the content to animate to an expanded
  * position or an unexpanded position depending on the value of the expanded property.
@@ -26,8 +40,8 @@ class Expandable extends React.Component<Props, State> {
     contentRef: React.RefObject<HTMLDivElement>;
     containerRef: React.RefObject<HTMLDivElement>;
 
-    state: State = {
-        containerHeight: 0,
+    state = {
+        expandState: ExpandState.CLOSED,
     };
 
     constructor(props: Props) {
@@ -41,12 +55,22 @@ class Expandable extends React.Component<Props, State> {
 
     componentDidMount() {
         window.addEventListener("resize", this.onResize);
-        this.checkHeight();
+        if (this.props.expanded) {
+            this.setState({ expandState: ExpandState.OPENING });
+        }
     }
 
-    componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>, snapshot?: any) {
-        if (this.props.expandedHeight !== prevProps.expandedHeight || this.props.expanded !== prevProps.expanded) {
-            this.checkHeight();
+    componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>, snapshot?: any): void {
+        if (this.props.expanded !== prevProps.expanded) {
+            if (this.props.expanded) {
+                this.setState({ expandState: ExpandState.OPENING });
+            } else {
+                this.setState({ expandState: ExpandState.PREPARING_TO_CLOSE });
+            }
+        }
+
+        if (this.state.expandState === ExpandState.PREPARING_TO_CLOSE) {
+            setTimeout(() => this.setState({ expandState: ExpandState.CLOSING }));
         }
     }
 
@@ -55,12 +79,38 @@ class Expandable extends React.Component<Props, State> {
     }
 
     render(): React.ReactNode {
+        let height: Height = 0;
+
+        // Get height from state
+        switch (this.state.expandState) {
+            case ExpandState.PREPARING_TO_CLOSE: {
+                height = this.getFixedExpandedHeight();
+                break;
+            }
+            case ExpandState.CLOSING: {
+                height = 0;
+                break;
+            }
+            case ExpandState.CLOSED: {
+                height = 0;
+                break;
+            }
+            case ExpandState.OPENING: {
+                height = this.getFixedExpandedHeight();
+                break;
+            }
+            case ExpandState.OPEN: {
+                if (this.props.expandedHeight === "auto") {
+                    height = "auto";
+                } else {
+                    height = this.props.expandedHeight;
+                }
+                break;
+            }
+        }
+
         return (
-            <div
-                className="expandableContainer"
-                style={{ height: this.state.containerHeight }}
-                onTransitionEnd={this.onTransitionEnd.bind(this)}
-            >
+            <div className="expandableContainer" style={{ height: height }} onTransitionEnd={this.onTransitionEnd.bind(this)}>
                 <div className="expandableContent" ref={this.contentRef}>
                     {this.props.children}
                 </div>
@@ -69,41 +119,36 @@ class Expandable extends React.Component<Props, State> {
     }
 
     onResize() {
-        if (this.props.expanded && this.props.expandedHeight === "auto" && this.contentRef.current) {
-            this.setState({ containerHeight: this.contentRef.current.offsetHeight });
+        if (this.state.expandState === ExpandState.OPEN || this.state.expandState === ExpandState.OPENING) {
+            this.setState({ expandState: ExpandState.OPENING });
         }
     }
 
-    checkHeight() {
-        let height = 0;
+    getHeightFromState(state: ExpandState) {}
 
-        if (this.props.expanded) {
-            if (this.props.expandedHeight === "auto") {
-                if (this.contentRef.current) {
-                    height = this.contentRef.current.offsetHeight;
-                }
+    /*
+     * Returns how tall the expanded box is when expanded in pixels.
+     */
+    getFixedExpandedHeight(): number {
+        if (this.props.expandedHeight === "auto") {
+            if (this.contentRef.current) {
+                return this.contentRef.current.offsetHeight;
             } else {
-                height = this.props.expandedHeight;
+                return 1;
             }
-        }
-
-        if (height !== this.state.containerHeight) {
-            if (this.state.containerHeight === "auto" && this.contentRef.current !== null) {
-                this.setState({ containerHeight: this.contentRef.current.offsetHeight });
-                console.log(this.contentRef.current.offsetHeight);
-            }
-
-            this.setState({ containerHeight: height });
+        } else {
+            return this.props.expandedHeight;
         }
     }
 
     /*
-     * On transition end, if the height is set to auto, set the container's height to auto,
-     * so it can still resize with its children.
+     * On transition end, change the expandable's state
      */
     onTransitionEnd() {
-        if (this.props.expanded) {
-            this.setState({ containerHeight: "auto" });
+        if (this.state.expandState === ExpandState.OPEN || this.state.expandState === ExpandState.OPENING) {
+            this.setState({ expandState: ExpandState.OPEN });
+        } else {
+            this.setState({ expandState: ExpandState.CLOSED });
         }
     }
 }
