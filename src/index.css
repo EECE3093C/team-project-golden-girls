@@ -34,3 +34,9 @@ code {
     color: inherit;
     text-decoration: inherit;
 }
+
+.flexRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

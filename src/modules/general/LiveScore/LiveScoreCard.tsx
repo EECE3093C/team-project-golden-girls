@@ -1,5 +1,6 @@
 import React from "react";
 import { GameInfo } from "../../api/GameInfo";
+import { GameStatusState } from "../../api/GameStatus";
 
 import "./LiveScoreCard.css";
 
@@ -13,19 +14,52 @@ type Props = {
  */
 class LiveScoreCard extends React.Component<Props> {
     render() {
+        let statusBar;
+
+        switch (this.props.game.status.status) {
+            case GameStatusState.NOT_STARTED: {
+                statusBar = (
+                    <div className="statusRow scheduled liveScoreText">
+                        <div className="gameDate">{this.props.game.date}</div>
+                        <div className="gameTime">{this.props.game.time}</div>
+                    </div>
+                );
+                break;
+            }
+            case GameStatusState.LIVE:
+                statusBar = (
+                    <div className="statusRow scheduled liveScoreText">
+                        <div className="flexRow">
+                            <div className="redDot"></div>
+                            <div className="liveText">Live</div>
+                        </div>
+                        {this.props.game.status.halftime ? (
+                            <div>Halftime</div>
+                        ) : (
+                            <div>
+                                Q{this.props.game.status.quarter} - {this.props.game.status.clock}
+                            </div>
+                        )}
+                    </div>
+                );
+                break;
+            case GameStatusState.FINISHED:
+                statusBar = <div className="statusRow scheduled liveScoreText">Final</div>;
+                break;
+            default:
+                break;
+        }
+
         return (
             <div className="liveScoreCard">
-                <div className="scoreDateRow liveScoreText">
-                    <div className="gameDate">{this.props.game.date}</div>
-                    <div className="gameTime">{this.props.game.time}</div>
-                </div>
-                <div className="teamInfo liveScoreText">
+                {statusBar}
+                <div className="teamInfo">
                     <img src={this.props.game.homeTeam.logo} className="logo" alt="" />
 
                     <div className="teamName">{this.props.game.homeTeam.name}</div>
                     <div className="teamScore">{this.props.game.homeTeam.totalScore}</div>
                 </div>
-                <div className="teamInfo liveScoreText">
+                <div className="teamInfo">
                     <img src={this.props.game.awayTeam.logo} className="logo" alt="" />
 
                     <div className="teamName">{this.props.game.awayTeam.name}</div>

@@ -97,7 +97,7 @@ class NBAPage extends React.Component<Props, State> {
             color: "rgb(0,0,255)",
             name: "Dallas Mavericks",
             city: "",
-            totalScore: 0,
+            totalScore: 21,
             quarterScores: [],
             record: {
                 wins: 0,
@@ -111,7 +111,7 @@ class NBAPage extends React.Component<Props, State> {
             color: "rgb(255,0,0)",
             name: "Miami Heat",
             city: "",
-            totalScore: 0,
+            totalScore: 14,
             quarterScores: [],
             record: {
                 wins: 0,
@@ -143,10 +143,10 @@ class NBAPage extends React.Component<Props, State> {
             time: "1 PM EST",
             location: "Dallas",
             status: {
-                status: GameStatusState.NOT_STARTED,
-                quarter: 0,
-                clock: null,
-                halftime: false,
+                status: GameStatusState.FINISHED,
+                quarter: 1,
+                clock: "1:10",
+                halftime: true,
             },
         };
 
