@@ -62,7 +62,6 @@ class Expandable extends React.Component<Props, State> {
 
     componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>, snapshot?: any): void {
         if (this.props.expanded !== prevProps.expanded) {
-            console.log("expanded change");
             if (this.props.expanded) {
                 this.setState({ expandState: ExpandState.OPENING });
             } else {
@@ -110,8 +109,6 @@ class Expandable extends React.Component<Props, State> {
             }
         }
 
-        console.log("render - " + this.state.expandState);
-
         return (
             <div className="expandableContainer" style={{ height: height }} onTransitionEnd={this.onTransitionEnd.bind(this)}>
                 <div className="expandableContent" ref={this.contentRef}>
@@ -148,7 +145,6 @@ class Expandable extends React.Component<Props, State> {
      * On transition end, change the expandable's state
      */
     onTransitionEnd() {
-        console.log("transition end - " + this.state.expandState);
         if (this.state.expandState === ExpandState.OPEN || this.state.expandState === ExpandState.OPENING) {
             this.setState({ expandState: ExpandState.OPEN });
         } else {
