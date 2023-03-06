@@ -1,12 +1,12 @@
 .leagueDisplay {
     font-style: normal;
     font-weight: 400;
-    font-size: 40px;
-    line-height: 40px;
+    font-size: 36px;
+    line-height: 36px;
     display: flex;
     align-items: center;
     width: fit-content;
-    padding: 5px;
+    padding: 5px 16px;
 }
 
 .leagueDisplay.primary {

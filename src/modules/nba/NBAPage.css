@@ -1,0 +1,30 @@
+.nba.page {
+    display: flex;
+    flex-direction: row;
+
+    padding: 3%;
+}
+
+.leagueTitleBlock {
+    border-left: solid white 3px;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.leagueGameListTitle {
+    margin: 0;
+}
+
+.leagueGameListDates {
+    margin: 0;
+}
+
+.nba .scoreSidebar {
+    flex-grow: 0.5;
+    display: flex;
+    justify-content: center;
+}
+
+.nba .content {
+    flex-grow: 1;
+}

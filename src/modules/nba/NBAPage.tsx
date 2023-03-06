@@ -3,11 +3,12 @@ import { TeamInfo } from "../api/TeamInfo";
 import { GameInfo } from "../api/GameInfo";
 import GameCardList from "../general/GameCard/GameCardList";
 import APIHandler from "../api/APIHandler";
-import { Sport } from "../api/Sport";
+import { League } from "../api/League";
 import { GameScore } from "../api/GameScore";
 
 import "./NBAPage.css";
 import LiveScoreList from "../general/LiveScore/LiveScoreList";
+import LeagueDisplay from "../general/LeagueDisplay/LeagueDisplay";
 
 const USE_TEST_DATA = true;
 
@@ -16,12 +17,20 @@ type Props = {};
 type State = {
     games: GameInfo[] | null;
     scores: GameScore[] | null;
+    startDate: Date;
+    endDate: Date;
 };
 
 class NBAPage extends React.Component<Props, State> {
     state = {
         games: null,
         scores: null,
+        startDate: new Date(),
+        endDate: (() => {
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 7);
+            return endDate;
+        })(),
     };
 
     componentDidMount(): void {
@@ -34,21 +43,38 @@ class NBAPage extends React.Component<Props, State> {
 
     render() {
         return (
-            <div>
-                <br />
-                {this.state.games !== null ? <GameCardList games={this.state.games} /> : <div> Loading </div>}
-                <br />
-                {this.state.scores !== null ? <LiveScoreList gameScores={this.state.scores} /> : <div> Loading </div>}
+            <div className="nba page">
+                <div className="scoreSidebar">
+                    {this.state.scores !== null ? <LiveScoreList gameScores={this.state.scores} /> : <div> Loading </div>}
+                </div>
+
+                <div className="content">
+                    <div className="leagueTitleBlock">
+                        <LeagueDisplay league={League.NBA} usePrimaryColors={false} />
+                        <h1 className="leagueGameListTitle">UPCOMING GAMES</h1>
+                        <h4 className="leagueGameListDates">
+                            {NBAPage.getDateDayDisplay(this.state.startDate)} - {NBAPage.getDateDayDisplay(this.state.endDate)}
+                        </h4>
+                    </div>
+                    <br />
+                    {this.state.games !== null ? <GameCardList games={this.state.games} /> : <div> Loading </div>}
+                </div>
             </div>
         );
+    }
+
+    static getDateDayDisplay(date: Date): string {
+        return date.toLocaleString("default", {
+            month: "short",
+            day: "numeric",
+        });
     }
 
     requestGameList(): void {
         const today = new Date();
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
-        APIHandler.getGames(today, tomorrow, Sport.NBA).then((games) => {
-            console.log(games)
+        APIHandler.getGames(today, tomorrow, League.NBA).then((games) => {
             this.setState({
                 games: games,
             });

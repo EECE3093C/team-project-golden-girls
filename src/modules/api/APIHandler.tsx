@@ -1,10 +1,10 @@
 import { GameInfo } from "./GameInfo";
-import { Sport } from "./Sport";
+import { League } from "./League";
 
 const BASE_API_URL = "http://localhost:9000/api/v1/";
 
 class APIHandler {
-    static async getGames(startDate: Date, endDate: Date, sport: Sport): Promise<GameInfo[]> {
+    static async getGames(startDate: Date, endDate: Date, sport: League): Promise<GameInfo[]> {
         const response = await fetch(
             BASE_API_URL +
                 "games?" +
@@ -15,7 +15,6 @@ class APIHandler {
                 })
         );
         const data = await response.json();
-        console.log(data);
         const games: GameInfo[] = [];
         for (const game of data.games) {
             games.push({

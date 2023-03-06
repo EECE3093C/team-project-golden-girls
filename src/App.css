@@ -1,3 +1,21 @@
-.App {
-  text-align: center;
+.app {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+    color: #fff;
+}
+
+.app .page {
+    flex: 1 1 auto;
+    overflow-y: scroll;
+}
+
+h1 {
+    font-size: 54px;
+    font-weight: normal;
+}
+
+h4 {
+    font-size: 24px;
+    font-weight: normal;
 }

@@ -6,7 +6,7 @@ import Header from "./modules/header/Header";
 
 function App() {
     return (
-        <div className="App">
+        <div className="app">
             <Router>
                 <Header />
                 <Routes>

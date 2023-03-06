@@ -6,7 +6,7 @@
 
     margin: 10px;
 
-    width: 360px;
+    width: 280px;
     padding: 5px 20px;
     background: transparent;
     mix-blend-mode: normal;
@@ -22,7 +22,7 @@
 
 .liveScoreCard .scoreDateRow {
     width: 100%;
-    height: 50px;
+    height: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,7 +30,7 @@
 
 .liveScoreCard .teamInfo {
     width: 100%;
-    height: 50px;
+    height: 40px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -40,8 +40,8 @@
 .liveScoreText {
     position: relative;
     color: white;
-    font-size: 30px;
-    line-height: 30px;
+    font-size: 22px;
+    line-height: 22px;
 }
 
 .liveScoreText .logo {
