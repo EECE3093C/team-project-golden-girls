@@ -38,6 +38,7 @@ class NBAPage extends React.Component<Props, State> {
             this.setExampleData();
         } else {
             this.requestGameList();
+            this.requestScoreList();
         }
     }
 
