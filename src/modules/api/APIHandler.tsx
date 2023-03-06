@@ -7,7 +7,7 @@ class APIHandler {
     static async getGames(startDate: Date, endDate: Date, sport: Sport): Promise<GameInfo[]> {
         const response = await fetch(
             BASE_API_URL +
-                "games" +
+                "games?" +
                 new URLSearchParams({
                     start_date: startDate.toUTCString(),
                     end_date: endDate.toUTCString(),
@@ -15,6 +15,7 @@ class APIHandler {
                 })
         );
         const data = await response.json();
+        console.log(data);
         const games: GameInfo[] = [];
         for (const game of data.games) {
             games.push({
@@ -35,7 +36,7 @@ class APIHandler {
             });
         }
 
-        return Promise.resolve(data.games);
+        return Promise.resolve(games);
     }
 }
 

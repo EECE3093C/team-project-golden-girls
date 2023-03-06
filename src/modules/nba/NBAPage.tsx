@@ -48,6 +48,7 @@ class NBAPage extends React.Component<Props, State> {
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
         APIHandler.getGames(today, tomorrow, Sport.NBA).then((games) => {
+            console.log(games)
             this.setState({
                 games: games,
             });
