@@ -1,13 +1,12 @@
 import React, { ReactNode } from "react";
 
-import { GameScore } from "../../api/GameScore";
-
 import "./LiveScoreList.css";
 import LiveScoreCard from "./LiveScoreCard";
+import { GameInfo } from "../../api/GameInfo";
 
 type Props = {
     /** The game scores that should be displayed in this list */
-    gameScores: GameScore[];
+    gameScores: GameInfo[];
 };
 
 /*
@@ -18,7 +17,7 @@ class LiveScoreList extends React.Component<Props> {
         const gameComponents: ReactNode[] = [];
 
         for (const game of this.props.gameScores) {
-            gameComponents.push(<LiveScoreCard key={game.gameId} game={game} />);
+            gameComponents.push(<LiveScoreCard key={game.id} game={game} />);
         }
 
         return <div className="liveScoreList">{gameComponents}</div>;

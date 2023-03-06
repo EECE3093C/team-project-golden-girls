@@ -1,3 +1,4 @@
+import { GameStatus } from "./GameStatus";
 import { TeamInfo } from "./TeamInfo";
 
 export type GameInfo = {
@@ -7,4 +8,5 @@ export type GameInfo = {
     date: string;
     time: string;
     location: string;
+    status: GameStatus;
 };

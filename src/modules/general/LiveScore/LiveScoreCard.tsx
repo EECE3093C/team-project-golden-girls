@@ -1,12 +1,11 @@
 import React from "react";
-
-import { GameScore } from "../../api/GameScore";
+import { GameInfo } from "../../api/GameInfo";
 
 import "./LiveScoreCard.css";
 
 type Props = {
     /**This contains the live game info for each game */
-    game: GameScore;
+    game: GameInfo;
 };
 
 /*
@@ -17,20 +16,20 @@ class LiveScoreCard extends React.Component<Props> {
         return (
             <div className="liveScoreCard">
                 <div className="scoreDateRow liveScoreText">
-                    <div className="gameDate">{this.props.game.gameDate}</div>
-                    <div className="gameTime">{this.props.game.gameTime}</div>
+                    <div className="gameDate">{this.props.game.date}</div>
+                    <div className="gameTime">{this.props.game.time}</div>
                 </div>
                 <div className="teamInfo liveScoreText">
-                    <img src={this.props.game.team1Logo} className="logo" alt="" />
+                    <img src={this.props.game.homeTeam.logo} className="logo" alt="" />
 
-                    <div className="teamName">{this.props.game.team1Name}</div>
-                    <div className="teamScore">{this.props.game.team1Score}</div>
+                    <div className="teamName">{this.props.game.homeTeam.name}</div>
+                    <div className="teamScore">{this.props.game.homeTeam.totalScore}</div>
                 </div>
                 <div className="teamInfo liveScoreText">
-                    <img src={this.props.game.team2Logo} className="logo" alt="" />
+                    <img src={this.props.game.awayTeam.logo} className="logo" alt="" />
 
-                    <div className="teamName">{this.props.game.team2Name}</div>
-                    <div className="teamScore">{this.props.game.team2Score}</div>
+                    <div className="teamName">{this.props.game.awayTeam.name}</div>
+                    <div className="teamScore">{this.props.game.awayTeam.totalScore}</div>
                 </div>
             </div>
         );
