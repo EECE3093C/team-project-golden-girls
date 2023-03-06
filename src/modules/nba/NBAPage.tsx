@@ -11,6 +11,7 @@ import LeagueDisplay from "../general/LeagueDisplay/LeagueDisplay";
 import { GameStatusState } from "../api/GameStatus";
 
 const USE_TEST_DATA = false;
+const REFRESH_SCORE_INTERVAL = 10 * 1000;
 
 type Props = {};
 
@@ -33,12 +34,24 @@ class NBAPage extends React.Component<Props, State> {
         })(),
     };
 
+    liveScoreHandle: NodeJS.Timer | null = null;
+
     componentDidMount(): void {
         if (USE_TEST_DATA) {
             this.setExampleData();
         } else {
             this.requestGameList();
             this.requestScoreList();
+
+            this.liveScoreHandle = setInterval(() => {
+                this.requestScoreList();
+            }, REFRESH_SCORE_INTERVAL);
+        }
+    }
+
+    componentWillUnmount(): void {
+        if (this.liveScoreHandle !== null) {
+            clearInterval(this.liveScoreHandle);
         }
     }
 
