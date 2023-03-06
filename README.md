@@ -66,6 +66,27 @@ The single most serious challenge we expect to face is **complexity** in the pro
 - **Nate Louder** - backend
 - **Calvin Kinateder** - backend/frontend connection
 - **Jimmy German** - frontend
+  
+## Documentation
+
+Documentation for indavidual files will be written as comments within the specified file and will be later combined into a formal documentation of the entire program. Commits pertaining to improving file documentation or README improvements can be linked to issue **#41** [Improve Backend Document Comments](https://github.com/EECE3093C/team-project-golden-girls/issues/41). Be sure to include the file(s) that were changed in the comment. Example commit message `made improvements to <filename>.js comment documentation`.
+### Header
+Process files will contain a header comment that contains useful information regarding the contents and history of the file. A template to be used for the header can be found below.
+
+```js
+/**
+ * File: <file name>.js
+ * Description: <brief description of the file purpose>
+ * 
+ * @author: [<author full name>]
+ * @date: [Date Created: <file creation date mm/dd/yy> / Modified: <file
+ * modified date mm/dd/yy>]
+ * 
+ * HISTORY:
+ *  - <date mm/dd/yy>, <Name>(<branch used for change>): Created file.<Anyother
+ * changes or immprovements made>
+ */
+```
 
 ## Setup
 

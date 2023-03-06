@@ -18,9 +18,13 @@
     border-radius: 20px;
 
     overflow: hidden;
+
+    color: white;
+    font-size: 22px;
+    line-height: 22px;
 }
 
-.liveScoreCard .scoreDateRow {
+.liveScoreCard .statusRow {
     width: 100%;
     height: 40px;
     display: flex;
@@ -37,18 +41,25 @@
     justify-content: left;
 }
 
-.liveScoreText {
-    position: relative;
-    color: white;
-    font-size: 22px;
-    line-height: 22px;
-}
-
-.liveScoreText .logo {
+.liveScoreCard .teamInfo .logo {
     height: 90%;
     margin-right: 8px;
 }
 
-.liveScoreText .teamScore {
+.liveScoreCard .teamInfo .teamScore {
     margin-left: auto;
+}
+
+.redDot {
+    border-radius: 15px;
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+    background-color: #d02424;
+}
+
+.liveText {
+    -webkit-text-fill-color: #404040; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #d02424;
 }
