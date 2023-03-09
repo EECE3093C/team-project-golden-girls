@@ -35,23 +35,32 @@ class LiveScoreCard extends React.Component<Props> {
                 );
                 break;
             }
-            case GameStatusState.LIVE:
+            case GameStatusState.LIVE: {
+                let quarterDisplay;
+
+                if (this.props.game.status.halftime) {
+                    quarterDisplay = <div>Halftime</div>;
+                } else if (this.props.game.status.clock == null) {
+                    quarterDisplay = <div>End of Q{this.props.game.status.quarter}</div>;
+                } else {
+                    quarterDisplay = (
+                        <div>
+                            Q{this.props.game.status.quarter} - {this.props.game.status.clock}
+                        </div>
+                    );
+                }
+
                 statusBar = (
                     <div className="statusRow scheduled liveScoreText">
                         <div className="flexRow">
                             <div className="redDot"></div>
                             <div className="liveText">Live</div>
                         </div>
-                        {this.props.game.status.halftime ? (
-                            <div>Halftime</div>
-                        ) : (
-                            <div>
-                                Q{this.props.game.status.quarter} - {this.props.game.status.clock}
-                            </div>
-                        )}
+                        {quarterDisplay}
                     </div>
                 );
                 break;
+            }
             case GameStatusState.FINISHED:
                 statusBar = <div className="statusRow scheduled liveScoreText">Final</div>;
                 break;

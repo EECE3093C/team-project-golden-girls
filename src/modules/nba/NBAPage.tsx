@@ -105,7 +105,7 @@ class NBAPage extends React.Component<Props, State> {
 
     setExampleData(): void {
         // Create Example Game
-        let homeTeam: TeamInfo = {
+        let team1: TeamInfo = {
             logo: "https://upload.wikimedia.org/wikipedia/fr/thumb/b/b8/Mavericks_de_Dallas_logo.svg/150px-Mavericks_de_Dallas_logo.svg.png",
             color: "rgb(0,0,255)",
             name: "Dallas Mavericks",
@@ -119,7 +119,7 @@ class NBAPage extends React.Component<Props, State> {
             code: "",
         };
 
-        let awayTeam: TeamInfo = {
+        let team2: TeamInfo = {
             logo: "https://upload.wikimedia.org/wikipedia/fr/thumb/1/1c/Miami_Heat_-_Logo.svg/1200px-Miami_Heat_-_Logo.svg.png",
             color: "rgb(255,0,0)",
             name: "Miami Heat",
@@ -133,10 +133,24 @@ class NBAPage extends React.Component<Props, State> {
             code: "",
         };
 
+        let team3: TeamInfo = {
+            logo: "https://upload.wikimedia.org/wikipedia/fr/archive/d/d6/20161212034849%21Wizards2015.png",
+            color: "rgb(0, 45, 98)",
+            name: "Wizards",
+            city: "Washington",
+            totalScore: 93,
+            quarterScores: [],
+            record: {
+                wins: 0,
+                losses: 0,
+            },
+            code: "",
+        };
+
         let game1: GameInfo = {
             id: 1,
-            homeTeam: homeTeam,
-            awayTeam: awayTeam,
+            homeTeam: team1,
+            awayTeam: team2,
             date: new Date(),
             location: "Miami",
             status: {
@@ -149,8 +163,22 @@ class NBAPage extends React.Component<Props, State> {
 
         let game2: GameInfo = {
             id: 2,
-            homeTeam: awayTeam,
-            awayTeam: homeTeam,
+            homeTeam: team3,
+            awayTeam: team2,
+            date: new Date(),
+            location: "Washington",
+            status: {
+                status: GameStatusState.LIVE,
+                quarter: 3,
+                clock: null,
+                halftime: false,
+            },
+        };
+
+        let game3: GameInfo = {
+            id: 3,
+            homeTeam: team2,
+            awayTeam: team1,
             date: new Date(),
             location: "Dallas",
             status: {
@@ -161,7 +189,7 @@ class NBAPage extends React.Component<Props, State> {
             },
         };
 
-        let games = [game1, game2];
+        let games = [game1, game2, game3];
 
         this.setState({
             games: games,
