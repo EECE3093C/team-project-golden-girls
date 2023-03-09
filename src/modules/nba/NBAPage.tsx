@@ -11,7 +11,7 @@ import LeagueDisplay from "../general/LeagueDisplay/LeagueDisplay";
 import { GameStatusState } from "../api/GameStatus";
 
 const USE_TEST_DATA = false;
-const REFRESH_SCORE_INTERVAL = 10 * 1000;
+const REFRESH_SCORE_INTERVAL = 60 * 1000;
 
 type Props = {};
 
@@ -137,8 +137,7 @@ class NBAPage extends React.Component<Props, State> {
             id: 1,
             homeTeam: homeTeam,
             awayTeam: awayTeam,
-            date: "02/23/23",
-            time: "7 PM EST",
+            date: new Date(),
             location: "Miami",
             status: {
                 status: GameStatusState.NOT_STARTED,
@@ -152,8 +151,7 @@ class NBAPage extends React.Component<Props, State> {
             id: 2,
             homeTeam: awayTeam,
             awayTeam: homeTeam,
-            date: "02/25/23",
-            time: "1 PM EST",
+            date: new Date(),
             location: "Dallas",
             status: {
                 status: GameStatusState.FINISHED,

@@ -22,8 +22,7 @@ class APIHandler {
                 id: game.id,
                 homeTeam: APIHandler.convertAPITeam(game.homeTeam),
                 awayTeam: APIHandler.convertAPITeam(game.awayTeam),
-                date: game.date,
-                time: game.time,
+                date: new Date(game.date),
                 location: game.homeTeam.city,
                 status: {
                     status: game.statusShort,
@@ -52,8 +51,7 @@ class APIHandler {
                 id: game.id,
                 homeTeam: APIHandler.convertAPITeam(game.homeTeam),
                 awayTeam: APIHandler.convertAPITeam(game.awayTeam),
-                date: game.date,
-                time: game.time,
+                date: new Date(game.date),
                 location: game.homeTeam.city,
                 status: {
                     status: game.gameStatus.statusShort,

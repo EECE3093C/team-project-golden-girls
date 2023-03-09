@@ -14,14 +14,23 @@ type Props = {
  */
 class LiveScoreCard extends React.Component<Props> {
     render() {
-        let statusBar;
+        const dateOptions = {
+            month: "short",
+            day: "numeric",
+        } as const;
 
+        const timeOptions = {
+            hour: "numeric",
+            minute: "numeric",
+        } as const;
+
+        let statusBar;
         switch (this.props.game.status.status) {
             case GameStatusState.NOT_STARTED: {
                 statusBar = (
                     <div className="statusRow scheduled liveScoreText">
-                        <div className="gameDate">{this.props.game.date}</div>
-                        <div className="gameTime">{this.props.game.time}</div>
+                        <div className="gameDate">{this.props.game.date.toLocaleString("en-US", dateOptions)}</div>
+                        <div className="gameTime">{this.props.game.date.toLocaleString("en-US", timeOptions)}</div>
                     </div>
                 );
                 break;
