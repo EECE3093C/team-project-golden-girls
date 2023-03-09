@@ -5,8 +5,7 @@ export type GameInfo = {
     id: number;
     homeTeam: TeamInfo;
     awayTeam: TeamInfo;
-    date: string;
-    time: string;
+    date: Date;
     location: string;
     status: GameStatus;
 };

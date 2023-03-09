@@ -15,7 +15,7 @@ type Props = {
 };
 
 type State = {
-    expanded: boolean; 
+    expanded: boolean;
 };
 
 /*
@@ -27,6 +27,16 @@ class GameCard extends React.Component<Props, State> {
     };
 
     render() {
+        const dateOptions = {
+            month: "short",
+            day: "numeric",
+        } as const;
+
+        const timeOptions = {
+            hour: "numeric",
+            minute: "numeric",
+        } as const;
+
         return (
             <div className="gameCard">
                 <div
@@ -47,8 +57,10 @@ class GameCard extends React.Component<Props, State> {
 
                 <Expandable expandedHeight={"auto"} expanded={this.state.expanded}>
                     <div className="gameCardInfoContainer">
-                        <div className="gameInfoText">Date: {this.props.game.date}</div>
-                        <div className="gameInfoText">Start Time: {this.props.game.time}</div>
+                        <div className="gameInfoText">Date: {this.props.game.date.toLocaleString("en-US", dateOptions)}</div>
+                        <div className="gameInfoText">
+                            Start Time: {this.props.game.date.toLocaleString("en-US", timeOptions)}
+                        </div>
                         <div className="gameInfoText">Location: {this.props.game.location}</div>
                     </div>
 

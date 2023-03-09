@@ -14,35 +14,53 @@ type Props = {
  */
 class LiveScoreCard extends React.Component<Props> {
     render() {
-        let statusBar;
+        const dateOptions = {
+            month: "short",
+            day: "numeric",
+        } as const;
 
+        const timeOptions = {
+            hour: "numeric",
+            minute: "numeric",
+        } as const;
+
+        let statusBar;
         switch (this.props.game.status.status) {
             case GameStatusState.NOT_STARTED: {
                 statusBar = (
                     <div className="statusRow scheduled liveScoreText">
-                        <div className="gameDate">{this.props.game.date}</div>
-                        <div className="gameTime">{this.props.game.time}</div>
+                        <div className="gameDate">{this.props.game.date.toLocaleString("en-US", dateOptions)}</div>
+                        <div className="gameTime">{this.props.game.date.toLocaleString("en-US", timeOptions)}</div>
                     </div>
                 );
                 break;
             }
-            case GameStatusState.LIVE:
+            case GameStatusState.LIVE: {
+                let quarterDisplay;
+
+                if (this.props.game.status.halftime) {
+                    quarterDisplay = <div>Halftime</div>;
+                } else if (this.props.game.status.clock == null) {
+                    quarterDisplay = <div>End of Q{this.props.game.status.quarter}</div>;
+                } else {
+                    quarterDisplay = (
+                        <div>
+                            Q{this.props.game.status.quarter} - {this.props.game.status.clock}
+                        </div>
+                    );
+                }
+
                 statusBar = (
                     <div className="statusRow scheduled liveScoreText">
                         <div className="flexRow">
                             <div className="redDot"></div>
                             <div className="liveText">Live</div>
                         </div>
-                        {this.props.game.status.halftime ? (
-                            <div>Halftime</div>
-                        ) : (
-                            <div>
-                                Q{this.props.game.status.quarter} - {this.props.game.status.clock}
-                            </div>
-                        )}
+                        {quarterDisplay}
                     </div>
                 );
                 break;
+            }
             case GameStatusState.FINISHED:
                 statusBar = <div className="statusRow scheduled liveScoreText">Final</div>;
                 break;
